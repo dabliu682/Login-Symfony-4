@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plataforma de soporte{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+     <h1>Plataforma de Aministradores {{ app.user.email }}</h1>
+{% endblock %}

@@ -9,10 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class PlataformaController extends AbstractController
 {
     /**
-     * @Route("/plataforma", name="plataforma_homepage")
+     * @Route("/plataforma", name="app_plataforma")
      */
     public function index()
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('plataforma/index.html.twig', ['controller_name' => 'PlataformaController',]);
     }
 }
