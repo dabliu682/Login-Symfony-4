@@ -18,24 +18,29 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    {% if is_granted('ROLE_USER') %}
-                        <ul class="navbar-nav">
+                    <ul class="navbar-nav">
+                        {% if is_granted('ROLE_USER') %}                        
                             <li class="nav-item active">
                                 <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('app_plataforma') }}">Usuarios</a>
-                            </li>
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('app_adminPlataforma') }}">Administradores</a>
-                                </li>
-                            {% endif %}
+                            </li>              
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_logout') }}">Salir</a>
+                                <a class="nav-link" href="{{ path('app_adminPlataforma') }}">Administradores</a>
                             </li>
-                        </ul>
-                    {% endif %}
+                        {% endif %}
+                        {% if is_granted('ROLE_SOPORTE') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Soporte</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Salir</a>
+                        </li>  
+                    </ul>
                 </div>
             </nav>
 

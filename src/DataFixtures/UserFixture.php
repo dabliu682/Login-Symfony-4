@@ -41,6 +41,16 @@ class UserFixture extends Fixture
             $cant++;
         }
 
+        for ($i = 0; $i < 2; $i++) {
+            $user = new User();
+            $user->setEmail(sprintf('soporte%d@soporte.com', $cant));
+            $user->setFirstName('Tecnico Soporte'.$cant);
+            $user->setPassword($this->passwordEncoder->encodePassword($user, 'tecnico'));
+            $user->setRoles(['ROLE_SOPORTE']);
+            $manager->persist($user);
+            $cant++;
+        }
+
 
         $manager->flush();
 

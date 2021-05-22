@@ -12,8 +12,7 @@ class AdminPlataformaController extends AbstractController
      * @Route("/admin/adminPlataforma", name="app_adminPlataforma")
      */
     public function index(): Response
-    {
-        
+    {        
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('admin_plataforma/index.html.twig');
     }    

@@ -13,7 +13,17 @@ class PlataformaController extends AbstractController
      */
     public function index()
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
-        return $this->render('plataforma/index.html.twig', ['controller_name' => 'PlataformaController',]);
+        if($this->isGranted('ROLE_USER'))
+        {
+            return $this->render('plataforma/index.html.twig', ['controller_name' => 'PlataformaController',]);
+        }
+
+        if($this->isGranted('ROLE_ADMIN'))
+        {
+            return $this->redirectToRoute('app_adminPlataforma');
+        }
+
+        
+        
     }
 }
